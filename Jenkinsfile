@@ -40,7 +40,12 @@ pipeline {
                 archiveArtifacts artifacts: 'package.json, package-lock.json, **/*.js, **/*.map', fingerprint: true
             }
         }
-
+        stage('checking Docker available to build') {
+            steps {
+                echo "Checking Docker available to build..."
+                sh "docker --version"
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image..."
