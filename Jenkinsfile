@@ -16,6 +16,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "Checking out code from Git..."
+                cleanWs()
                 git branch: 'main', url: 'https://github.com/mank1999/ecommerce-backend.git'
             }
         }
