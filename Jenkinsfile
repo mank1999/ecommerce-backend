@@ -11,7 +11,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Running tests...' // Prints a message
+                echo 'Running ecomerce tests...' // Prints a message
                 // Add your test commands here, e.g., sh 'mvn test'
             }
         }
