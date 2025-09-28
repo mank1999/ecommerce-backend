@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the project...' // Prints a message
+                echo 'Building the ecomerce project...' // Prints a message
                 // Add your build commands here, e.g., sh 'mvn clean install'
             }
         }
