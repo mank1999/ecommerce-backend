@@ -1,56 +1,38 @@
 pipeline {
-    agent any
-
-    environment {
-        NODE_VERSION = "22.12.0"
-    }
-
-    tools {
-        node js "NodeJS-22.12.0"
-    }
+    agent any // Specifies that the pipeline can run on any available agent
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Pull code from your repository
-                git branch: 'main', url: 'https://github.com/mank1999/ecommerce-backend.git'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                echo "Installing Node.js dependencies..."
-                sh 'npm install'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                echo "Running tests..."
-                // Since you don't have real tests, we simulate success
-                echo "All tests passed ✅"
-            }
-        }
-
         stage('Build') {
             steps {
-                echo "Build stage - ready for future build steps"
+                echo 'Building the project...' // Prints a message
+                // Add your build commands here, e.g., sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...' // Prints a message
+                // Add your test commands here, e.g., sh 'mvn test'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploy stage - can be configured later for Docker"
+                echo 'Deploying the application...' // Prints a message
+                // Add your deployment commands here, e.g., sh 'scp target/my-app.war user@server:/path/to/webapps/'
             }
         }
     }
 
     post {
+        always {
+            echo 'Pipeline finished.' // Executes regardless of stage success or failure
+        }
         success {
-            echo "Pipeline completed successfully! ✅"
+            echo 'Pipeline completed successfully!' // Executes only if all stages succeed
         }
         failure {
-            echo "Pipeline failed ❌"
+            echo 'Pipeline failed. Check the logs for details.' // Executes only if any stage fails
         }
     }
 }
