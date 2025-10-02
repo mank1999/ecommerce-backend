@@ -19,13 +19,12 @@ pipeline {
         checkout scm
     }
 }
-        stage('Checkout') {
-            steps {
-                echo "Checking out code from Git..."
-                cleanWs()
-                git branch: 'main', url: 'https://github.com/mank1999/ecommerce-backend.git'
-            }
-        }
+    stage('Source Code Checkout') {
+      steps {
+        cleanWs()
+        git branch: 'main', url: 'https://github.com/mank1999/ecommerce-backend.git'
+      }
+    }
 
         stage('Install Dependencies') {
             steps {
