@@ -13,12 +13,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-    steps {
-        echo "Checking out code from Git..."
-        checkout scm
-    }
-}
     stage('Source Code Checkout') {
       steps {
         cleanWs()
