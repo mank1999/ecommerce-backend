@@ -13,8 +13,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-}
     stage('Source Code Checkout') {
       steps {
         cleanWs()
